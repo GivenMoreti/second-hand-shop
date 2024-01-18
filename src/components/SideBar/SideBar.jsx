@@ -12,11 +12,6 @@ const sidebarIcons = [
     link: "/",
   },
   {
-    icon: <span class="material-icons md-18">search</span>,
-    text: "Search",
-    link: "/",
-  },
-  {
     icon: <span class="material-icons md-18">notifications</span>,
     text: "Notifications",
     link: "/",

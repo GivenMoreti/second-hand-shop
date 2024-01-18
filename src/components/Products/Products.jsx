@@ -45,6 +45,13 @@ export const Products = () => {
       productImage:
         "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJpbnRlcnxlbnwwfHwwfHx8MA%3D%3D",
     },
+    {
+        id:6,
+        title:"paper",
+        price:12,
+        description:"paper recycle",
+        productImage:"https://images.unsplash.com/photo-1470790376778-a9fbc86d70e2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByaW50ZXJ8ZW58MHx8MHx8fDA%3D"
+    }
   ];
 
   return (
