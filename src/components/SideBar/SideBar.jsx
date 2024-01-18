@@ -58,7 +58,7 @@ export const SideBar = () => {
           display={{ base: "none", md: "block" }}
           cursor={"pointer"}
         >
-          <Image src="twitter.pnghttps://plus.unsplash.com/premium_photo-1684785618727-378a3a5e91c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZWNvbW1lcmNlfGVufDB8fDB8fHww" />
+          <Image src="./../BottomOcean.png" />
         </Link>
         <Flex direction={"column"} w={"full"} h={"full"} cursor={"pointer"} gap={5} mt={0}>
         {sidebarIcons.map((item, index) => (

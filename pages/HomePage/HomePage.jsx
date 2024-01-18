@@ -1,14 +1,17 @@
-import { Container,Flex, Image,Box } from '@chakra-ui/react'
-import React from 'react';
-// import { FeedPosts } from '../../src/components/FeedPosts/FeedPosts';
-// import { SuggestedUsers } from '../../src/components/SuggestedUsers/SuggestedUsers';
+import { Container, Flex, Image, Box, Grid } from "@chakra-ui/react";
+import React from "react";
+import { FilterBar } from "../../src/components/FilterBar/FilterBar";
+import { Products } from "../../src/components/Products/Products";
 
 export const HomePage = () => {
   return (
-    <div>
-      <Container maxW={"container.lg"}>
-        
-      </Container>
-    </div>
-  )
-}
+    <Container maxW={"container.lg"}>
+      <FilterBar />
+      <Flex gap={4}>
+        <Box flex={2} py={2}>
+          <Products />
+        </Box>
+      </Flex>
+    </Container>
+  );
+};
