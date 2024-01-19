@@ -5,15 +5,37 @@ import {
   Image,
   VStack,
   Text,
+  Flex,
+  Button,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { AddToCart } from "./AddToCart";
+import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
 export const ProductItem = (props) => {
+  const [isAddedToCart, setIsAddedToCart] = useState(true);
+  const [quantity, setQuantity] = useState(0);
+  const handleAddToCart = () => {
+    setIsAddedToCart(!isAddedToCart);
+  };
+  const increment = () => {
+    setQuantity(quantity +  1);
+    if(quantity === 10){
+      alert("cannot add more than 10 items");
+      return null;
+    }
+  };
+  const decrement = () => {
+    setQuantity(quantity - 1);
+    if(quantity === 0){
+      setIsAddedToCart(true);
+    }
+  };
+
   return (
     <Container maxW={"container.sm"} py={5} border={"0.5px solid gray"}>
       <Box>
-        <Image objectFit='cover' boxSize='200px' src={props.productImage} />
+        <Image objectFit="cover" boxSize="200px" src={props.productImage} />
       </Box>
       <VStack p={2} alignItems={"flex-start"}>
         <Box>
@@ -21,9 +43,22 @@ export const ProductItem = (props) => {
           <Text>R{props.price}</Text>
           <Text>{props.details}</Text>
         </Box>
-        
       </VStack>
-      <AddToCart title={"Add to cart"}/>
+
+      {isAddedToCart ? (
+        <AddToCart title="Add to cart" onClick={handleAddToCart} />
+      ) : (
+        <Flex alignItems={"center"} mx={4} px={4}>
+          <Button onClick={increment}>
+            <AddIcon />
+          </Button>
+          <Text mx={4}>{quantity}</Text>
+          <Button onClick={decrement}>
+           
+            <MinusIcon />
+          </Button>
+        </Flex>
+      )}
     </Container>
   );
 };

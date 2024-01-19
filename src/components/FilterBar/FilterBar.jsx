@@ -17,9 +17,9 @@ import { Cart } from "../../Cart/Cart";
 import { HeaderFilters } from "../HeaderFilters/HeaderFilters";
 export const FilterBar = () => {
   return (
-    <Container alignItems={"center"} gap={2} justifyContent={"center"} p={4}>
-      <Flex p={2}>
-        <InputGroup w={"2000px"}>
+    <Container alignItems={"center"} gap={2}  p={4}>
+      <Flex p={2} justifyContent={"space-between"}>
+        <InputGroup w={"2000px"} >
           <Input size={"md"} placeholder="search for anything" />
           <InputRightAddon cursor={"pointer"}>
             <Text p={3} alignItems={"center"}>

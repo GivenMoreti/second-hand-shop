@@ -13,12 +13,13 @@ export const HeaderFilters = () => {
     },
     {
       id: 3,
-      category: "Books",
-    },
+      category:"Books"
+    }
+    
   ];
   return (
     <Stack spacing={3}>
-      <Select placeholder="Categories" variant={"filled"} size="md">
+      <Select placeholder="Categories" variant={"outline"} size="md">
         {categories.map((item) => {
           return (
             <option key={item.id} value="option1">

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Text, Link,Flex, Button } from "@chakra-ui/react";
+import { Container, Text, Link,Flex, Button,Modal } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
 export const Cart = () => {
@@ -13,5 +13,6 @@ export const Cart = () => {
         
       </Link>
     </Flex>
+   
   );
 };
