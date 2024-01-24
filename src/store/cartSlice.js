@@ -7,7 +7,10 @@ const cartSlice = createSlice({
         add(state, action) {
             state.push(action.payload);
         }
+        ,remove(state,action){
+            state.pop(action.payload);
+        }
     }
 });
-export const {add} = cartSlice.actions;
+export const {add,remove} = cartSlice.actions;
 export default cartSlice.reducer;

@@ -2,6 +2,7 @@ import React from "react";
 import { Stack, Select } from "@chakra-ui/react";
 
 export const HeaderFilters = () => {
+  //use the items in the products for categories
   const categories = [
     {
       id: 1,

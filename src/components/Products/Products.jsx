@@ -35,7 +35,7 @@ export const Products = () => {
 
   const allProducts = products.map((product) => (
     <Container>
-      <Card maxW="sm"  key={product.id}>
+      <Card maxW="sm">
         <ProductCard
           key={product.id} // Add a unique key to each ProductItem
           // id={product.id}
@@ -49,7 +49,7 @@ export const Products = () => {
             <Button variant="solid" colorScheme="blue">
               Buy now
             </Button>
-            <Button variant="ghost" colorScheme="blue" onClick={addToCart(product)}>
+            <Button variant="ghost" colorScheme="blue" onClick={()=>addToCart(product)}>
               Add to cart
             </Button>
           </ButtonGroup>
@@ -60,6 +60,7 @@ export const Products = () => {
 
   return (
     <Grid
+     
       maxW={"container.lg"}
       py={5}
       templateColumns={{ sm: "repeat(1,1fr)", md: "repeat(4,2fr)" }}
