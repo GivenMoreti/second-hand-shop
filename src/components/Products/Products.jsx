@@ -1,11 +1,23 @@
 import { Container, Grid } from "@chakra-ui/react";
 import { Grid4x4 } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
-// import { ProductItem } from "./ProductItem";
 import { ProductCard } from "./ProductCard";
+import {
+  Card,
+  ButtonGroup,
+  Button,
+  CardFooter,
+} from "@chakra-ui/react";
+//adding item to cart functionality
+import {useDispatch} from 'react-redux';
+import {add} from "../../store/cartSlice";
+
 
 export const Products = () => {
+  const dispatch = useDispatch();
+
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -14,19 +26,36 @@ export const Products = () => {
       .catch((error) => console.error("Error fetching products:", error));
   }, []);
 
-  const allProducts = products.map((product) => (
-    <ProductCard
-      key={product.id} // Add a unique key to each ProductItem
-      // id={product.id}
-      image = {product.image}
-      title={product.title}
-      price={product.price}
-    />
+  const addToCart = (product) => {
+    //dispatch add action
+  
+    dispatch(add(product));
     
+  };
 
+  const allProducts = products.map((product) => (
+    <Container>
+      <Card maxW="sm"  key={product.id}>
+        <ProductCard
+          key={product.id} // Add a unique key to each ProductItem
+          // id={product.id}
+          image={product.image}
+          title={product.title}
+          price={product.price}
+        />
 
-
-
+        <CardFooter>
+          <ButtonGroup spacing="2">
+            <Button variant="solid" colorScheme="blue">
+              Buy now
+            </Button>
+            <Button variant="ghost" colorScheme="blue" onClick={addToCart(product)}>
+              Add to cart
+            </Button>
+          </ButtonGroup>
+        </CardFooter>
+      </Card>
+    </Container>
   ));
 
   return (
