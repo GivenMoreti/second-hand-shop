@@ -7,15 +7,15 @@ import {
   ButtonGroup,
   Button,
   CardFooter,
+  Box,
+  Text,
 } from "@chakra-ui/react";
 //adding item to cart functionality
-import {useDispatch} from 'react-redux';
-import {add} from "../../store/cartSlice";
-
+import { useDispatch } from "react-redux";
+import { add } from "../../store/cartSlice";
 
 export const Products = () => {
   const dispatch = useDispatch();
-
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -28,9 +28,7 @@ export const Products = () => {
 
   const addToCart = (product) => {
     //dispatch add action
-  
     dispatch(add(product));
-    
   };
 
   const allProducts = products.map((product) => (
@@ -41,6 +39,8 @@ export const Products = () => {
           // id={product.id}
           image={product.image}
           title={product.title}
+          inStock={product.rating.count}
+          reviews={product.rating.rate}
           price={product.price}
         />
 
@@ -49,7 +49,11 @@ export const Products = () => {
             <Button variant="solid" colorScheme="blue">
               Buy now
             </Button>
-            <Button variant="ghost" colorScheme="blue" onClick={()=>addToCart(product)}>
+            <Button
+              variant="ghost"
+              colorScheme="blue"
+              onClick={() => addToCart(product)}
+            >
               Add to cart
             </Button>
           </ButtonGroup>
@@ -60,7 +64,6 @@ export const Products = () => {
 
   return (
     <Grid
-     
       maxW={"container.lg"}
       py={5}
       templateColumns={{ sm: "repeat(1,1fr)", md: "repeat(4,2fr)" }}

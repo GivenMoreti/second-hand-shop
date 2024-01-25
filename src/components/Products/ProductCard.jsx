@@ -35,9 +35,11 @@ export const ProductCard = (props) => {
           <AddToWishList />
         </Box>
 
-        <Stack mt="6" spacing="3">
+        <Stack mt="4" spacing="2">
           <Heading size="md">{props.title}</Heading>
           <Text>{props.description}</Text>
+          <Text>In stock {props.inStock}</Text>
+          <Text>{props.reviews} ⭐</Text>
           {/* <Text>{props.category}</Text> */}
           <Text color="blue.600" fontSize="2xl">
             R{props.price}
