@@ -9,6 +9,7 @@ import { CartPage } from '../pages/CarPage/CartPage';
 import {Payment} from "../pages/Payment/Payment";
 import { CategoriesPage } from '../pages/CategoriesPage/CategoriesPage';
 import { SellPage } from '../pages/SellPage/SellPage';
+import { Delivery } from '../pages/Delivery/Delivery';
 
 function App() { 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/categories' element = {<CategoriesPage/>}/> 
         <Route path='/profile' element = {<ProfilePage/>}/> 
         <Route path='/sell' element = {<SellPage/>}/> 
+        <Route path='/delivery' element = {<Delivery/>}/> 
       </Routes>
     </PageLayout>
   )

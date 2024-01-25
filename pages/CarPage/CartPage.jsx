@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Flex,
@@ -16,6 +16,9 @@ import {
   TableContainer,
   Button,
   Link,
+  Checkbox,
+  CheckboxGroup,
+  Stack,
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -36,6 +39,9 @@ export const CartPage = () => {
   const itemRemove = (item) => {
     dispatch(remove(item));
   };
+
+  // check box for delivery
+  const [isChecked, setIsChecked] = useState(false);
 
   return (
     <TableContainer p={4} maxW={"full"} w={{}}>
@@ -79,12 +85,31 @@ export const CartPage = () => {
                     <Text>Total due:</Text>
                     <Text>R{totalPrice}</Text>
 
-                    {/* take user to payment */}
-                    <Link to={"/payment"} as={RouterLink}>
-                      <Button colorScheme="teal" variant="outline">
-                        pay now
-                      </Button>
-                    </Link>
+                    <Stack spacing={[1, 5]} direction={["column", "row"]}>
+                      <Checkbox
+                        size="lg"
+                        colorScheme="orange"
+                        isChecked={isChecked}
+                        onChange={() => setIsChecked(!isChecked)}
+                      >
+                        Do you want delivery?
+                      </Checkbox>
+                      {isChecked ? (
+                        <Link to={"/delivery"} as={RouterLink}>
+                          <Button colorScheme="teal" variant="outline">
+                            Go to delivery
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Link to={"/payment"} as={RouterLink}>
+                          <Button colorScheme="teal" variant="outline">
+                            Go to delivery
+                          </Button>
+                        </Link>
+                      )}
+                    </Stack>
+
+                    {/* take user to delivery */}
                   </Flex>
                 </Box>
               ) : null}
