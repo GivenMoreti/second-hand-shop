@@ -18,7 +18,7 @@ import { Cart } from "../../Cart/Cart";
 import { HeaderFilters } from "../HeaderFilters/HeaderFilters";
 import { Link as RouterLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import { StarIcon } from '@chakra-ui/icons'
 export const FilterBar = () => {
 
   const wishListItems = useSelector((state) => state.wishlist);
@@ -40,7 +40,7 @@ export const FilterBar = () => {
         <Box>
           <Link to={"/wishlist"} as={RouterLink}>
           <Button variant="outline">
-            <Text p={3}>Wishlist {wishListItems.length} </Text>❤️
+            <Text p={3} alignContent={"center"}>Wishlist {wishListItems.length} <StarIcon /> </Text>
           </Button>
           </Link>
         </Box>

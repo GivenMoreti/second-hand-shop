@@ -11,10 +11,21 @@ import {
   TableContainer,
   Container,
   Text,
+  Flex,
 } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import {removeFromWishList} from "../../src/store/wishListSlice";
 import { add } from "../../src/store/cartSlice";
+import {
+  ArrowUpDownIcon,
+  DeleteIcon,
+  ChevronUpIcon,
+  ChevronDownIcon,
+  AddIcon
+} from "@chakra-ui/icons";
+
+
+
 
 export const WishList = () => {
   const dispatch = useDispatch();
@@ -36,7 +47,11 @@ export const WishList = () => {
     dispatch(removeFromWishList(item));
   };
   return (
-    <Container maxW="2xl" mt={10} border={"1px solid gray"} centerContent>
+    <Container maxW={"container.xlg"} mt={10}  >
+      <Flex justifyContent={"center"}>
+        <Text fontSize={30}>Wishlist</Text>
+      </Flex>
+      
       <TableContainer>
         <Table variant="simple">
           <Thead>
@@ -44,7 +59,7 @@ export const WishList = () => {
               <Th>Item</Th>
               <Th>Quantity</Th>
               <Th isNumeric>Price</Th>
-              <Th isNumeric>Remove</Th>
+              <Th> <DeleteIcon /></Th>
               <Th>Add to cart</Th>
             </Tr>
           </Thead>
@@ -61,10 +76,10 @@ export const WishList = () => {
                     cursor={"pointer"}
                     onClick={() => removeWishListFunc(item)}
                   >
-                    Remove item
+                     <DeleteIcon />
                   </Td>
                   <Td cursor={"pointer"} onClick={() => addToCart(item)}>
-                    Add to cart
+                  <AddIcon/>
                   </Td>
                 </Tr>
               ))

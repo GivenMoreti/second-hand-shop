@@ -23,6 +23,13 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { remove } from "../../src/store/cartSlice";
 import { Link as RouterLink } from "react-router-dom";
+import {
+  ArrowUpDownIcon,
+  DeleteIcon,
+  ChevronUpIcon,
+  ChevronDownIcon,
+} from "@chakra-ui/icons";
+
 
 export const CartPage = () => {
   const dispatch = useDispatch();
@@ -45,13 +52,26 @@ export const CartPage = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
-    <TableContainer p={4} maxW={"full"} w={{}}>
+    <Container maxW={"container.xlg"} mt={10} >
+      <Flex justifyContent={"center"}>
+        <Text fontSize={30}>Shopping Cart</Text>
+       
+      </Flex>
+    <TableContainer  >
       <Table variant="striped" colorScheme="gray" size="md">
+   
         <Thead>
           <Tr>
             <Th>Title</Th>
             <Th>Quantity</Th>
             <Th isNumeric>Price</Th>
+            <Th>
+              
+              <DeleteIcon />
+            </Th>
+            <Th>
+              <ArrowUpDownIcon />
+            </Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -62,7 +82,32 @@ export const CartPage = () => {
                 <Td>{item.rating.count}</Td>
                 <Td isNumeric>R{item.price}</Td>
                 <Td cursor={"pointer"} onClick={() => itemRemove(item)}>
-                  Remove item
+                  <DeleteIcon color={"red.600"} fontSize={20} />
+                </Td>
+                <Td>
+                  <Flex gap={2}>
+                    <Text
+                      _hover={{ color: "blue.500", fontSize: 20 }}
+                      cursor={"pointer"}
+                    >
+                      {" "}
+                      <ChevronUpIcon
+                        bgColor={"blue.200"}
+                        fontSize={30}
+                        borderRadius={5}
+                      />
+                    </Text>
+                    <Text
+                      _hover={{ color: "red.500", fontSize: 20 }}
+                      cursor={"pointer"}
+                    >
+                      <ChevronDownIcon
+                        bgColor={"red.200"}
+                        fontSize={30}
+                        borderRadius={5}
+                      />
+                    </Text>
+                  </Flex>
                 </Td>
               </Tr>
             ))
@@ -119,5 +164,6 @@ export const CartPage = () => {
         </Tbody>
       </Table>
     </TableContainer>
+    </Container>
   );
 };

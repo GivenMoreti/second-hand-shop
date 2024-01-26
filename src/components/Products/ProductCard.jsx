@@ -12,7 +12,7 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-
+import { StarIcon } from '@chakra-ui/icons'
 
 export const ProductCard = (props) => {
   const addToCart = () => {
@@ -36,7 +36,7 @@ export const ProductCard = (props) => {
           <Heading size="md">{props.title}</Heading>
           <Text>{props.description}</Text>
           <Text>In stock {props.inStock}</Text>
-          <Text>{props.reviews} ⭐</Text>
+          <Text>{props.reviews} <StarIcon/></Text>
           {/* <Text>{props.category}</Text> */}
           <Text color="blue.600" fontSize="2xl">
             R{props.price}
