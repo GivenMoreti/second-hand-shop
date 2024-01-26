@@ -14,25 +14,37 @@ import {
 import { useDispatch } from "react-redux";
 import { add } from "../../store/cartSlice";
 
+import { addToWishList } from "../../store/wishListSlice";
+
 export const Products = () => {
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
-      .then((data) => setProducts(data))
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      }) 
       .catch((error) => console.error("Error fetching products:", error));
+      setLoading(false);
   }, []);
 
   const addToCart = (product) => {
     //dispatch add action
     dispatch(add(product));
   };
+  // add item to wish list
+  const addToWishlistFunc=(product)=>{
+    dispatch(addToWishList(product));
+  }
 
   const allProducts = products.map((product) => (
     <Container>
+        <Text>{loading && "loading please wait..."}</Text>
       <Card maxW="sm">
         <ProductCard
           key={product.id} // Add a unique key to each ProductItem
@@ -43,6 +55,13 @@ export const Products = () => {
           reviews={product.rating.rate}
           price={product.price}
         />
+        {/* add to wish list btn */}
+
+        <Box opacity={0} _hover={{ opacity: 1 }}>
+          <Button onClick={()=>addToWishlistFunc(product)}>
+              <Text>Add to wishlist</Text>
+          </Button>
+        </Box>
 
         <CardFooter>
           <ButtonGroup spacing="2">
@@ -63,6 +82,7 @@ export const Products = () => {
   ));
 
   return (
+    
     <Grid
       maxW={"container.lg"}
       py={5}
@@ -71,7 +91,9 @@ export const Products = () => {
       columnGap={1}
       p={2}
     >
+      
       {allProducts}
+    
     </Grid>
   );
 };

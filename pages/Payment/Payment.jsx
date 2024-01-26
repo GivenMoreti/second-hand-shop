@@ -8,6 +8,7 @@ export const Payment = () => {
   return (
     <Container>
       <Text>Choose Your Payment method</Text>
+      <Text>Integrate stripe</Text>
       
      
     </Container>

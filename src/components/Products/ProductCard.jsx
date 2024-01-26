@@ -12,7 +12,7 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import { AddToWishList } from "./AddToWishList";
+
 
 export const ProductCard = (props) => {
   const addToCart = () => {
@@ -31,10 +31,7 @@ export const ProductCard = (props) => {
           alt="item image"
           // borderRadius='lg'
         />
-        <Box opacity={0} _hover={{ opacity: 1 }}>
-          <AddToWishList />
-        </Box>
-
+        
         <Stack mt="4" spacing="2">
           <Heading size="md">{props.title}</Heading>
           <Text>{props.description}</Text>

@@ -20,22 +20,23 @@ import {
   CheckboxGroup,
   Stack,
 } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { remove } from "../../src/store/cartSlice";
 import { Link as RouterLink } from "react-router-dom";
 
 export const CartPage = () => {
   const dispatch = useDispatch();
   const itemsInCart = useSelector((state) => state.cart);
-
+  // get total payable in cart
   const totalPrice = itemsInCart
     .map((item) => item.price)
     .reduce((prev, curr) => prev + curr, 0);
+
   const totalQuantity = itemsInCart
     .map((item) => item.count)
     .reduce((prev, curr) => prev + curr, 0);
 
+  // remove item from cart
   const itemRemove = (item) => {
     dispatch(remove(item));
   };
@@ -56,7 +57,7 @@ export const CartPage = () => {
         <Tbody>
           {itemsInCart.length > 0 ? (
             itemsInCart.map((item) => (
-              <Tr>
+              <Tr key={item.id}>
                 <Td>{item.title}</Td>
                 <Td>{item.rating.count}</Td>
                 <Td isNumeric>R{item.price}</Td>

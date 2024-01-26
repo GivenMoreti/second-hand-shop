@@ -8,7 +8,14 @@ const cartSlice = createSlice({
             state.push(action.payload);
         }
         ,remove(state,action){
-            state.pop(action.payload);
+            // state.pop(action.payload)
+            //removes all the items with same id.
+            return state.filter(item => item.id !== action.payload.id);
+        },decrement(state,action){
+            state.pop(action.payload)
+        },increment(state,action){
+            //implements correct logic
+            state.push(state.payload);
         }
     }
 });

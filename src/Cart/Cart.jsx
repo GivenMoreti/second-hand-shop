@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 export const Cart = () => {
   
   const cartItems = useSelector(state=> state.cart); //for the cart in store.js
-  console.log("items in cart "+ cartItems)
+ 
   
   return (
     <Flex>

@@ -10,6 +10,7 @@ import {Payment} from "../pages/Payment/Payment";
 import { CategoriesPage } from '../pages/CategoriesPage/CategoriesPage';
 import { SellPage } from '../pages/SellPage/SellPage';
 import { Delivery } from '../pages/Delivery/Delivery';
+import { WishList } from '../pages/WishList/WishList';
 
 function App() { 
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='/profile' element = {<ProfilePage/>}/> 
         <Route path='/sell' element = {<SellPage/>}/> 
         <Route path='/delivery' element = {<Delivery/>}/> 
+        <Route path='/wishlist' element={<WishList/>}/>
       </Routes>
     </PageLayout>
   )
